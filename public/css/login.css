@@ -1,0 +1,138 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    float: right;
+    padding-right: 50px;
+    background-image: url("/images/bg3.png");
+    padding-left: 50px;
+    
+   
+}
+
+
+.icon-container{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    
+}
+.home-link {
+  
+   
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+    padding: 10px 20px 10px 0;
+    
+}
+
+
+.contact-link {
+   
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+    padding: 10px 0 10px 20px;
+    
+}
+
+.login-container {
+    background-image: linear-gradient(to right, rgba(136, 234, 135, 0.354), rgb(133, 226, 161));
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width:700px;
+    padding: 30px;
+    left: 20px;   
+    float: left; /* Add this line */
+    max-height: 450px ;
+}
+
+.login-form h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    font-size: 16px;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cta-button {
+display: inline-block;
+background-color: #4caf50;
+color: #fff;
+padding: 10px 50px;
+border: none;
+border-radius: 5px;
+font-size: 18px;
+text-align: center;
+text-decoration: none;
+cursor: pointer;
+transition: background-color 0.3s;
+
+}
+
+
+
+.cta-button:active {
+background-color: #3e8e41;
+}
+
+.extra-links {
+    margin-top: 20px;
+}
+
+.extra-links a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.section {
+text-align: center;
+float: left;
+
+background-color: #fff;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+padding-left: 30px;
+padding-right: 30px;
+}
+
+.mission h1 {
+text-align: center;
+font-size: 36px;
+color: #0f0f0f;
+margin-bottom: 20px;
+
+}
+
+.mission p {
+font-size: 18px;
+color: #3e3d3d;
+margin-bottom: 30px;
+}
+
+.error {
+    color: #ff0000; /* Red color for error messages */
+    font-size: 12px; /* Adjust the font size of error messages */
+    margin-top: 1px; /* Adjust the margin on top of error messages */
+}
