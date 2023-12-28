@@ -80,29 +80,16 @@ button:hover {
     <div class="view-issues-page-container">
         <section class="issue">
             <h2>Reported Issues</h2>
+            @foreach ($complaints as $complaint)     
             <div class="issue-details">
-                <h3>Issue: Pothole on Main Street</h3>
-                <p>Description: A large pothole on Main Street near the park entrance is causing damage to vehicles.</p>
-                <p>Reported by: Sara Ali</p>
-                <button>Resolve Issue</button>
+                <h3>Title: {{$complaint->complaint_type}}</h3>
+                <p>Description: {{$complaint->description}}</p>
+                <p>Reported by: {{$complaint->user_name}}</p>
+                <button>Resolve Issue</button>ar
             </div>
+            @endforeach
         </section>
-        <section class="issue">
-            <div class="issue-details">
-                <h3>Issue: Graffiti on Community Center</h3>
-                <p>Description: Graffiti on the walls of the community center needs immediate cleanup.</p>
-                <p>Reported by: Rida Kashif</p>
-                <button>Resolve Issue</button>
-            </div>
-        </section>
-        <section class="issue">
-            <div class="issue-details">
-                <h3>Issue: Litter Accumulation at the Beach</h3>
-                <p>Description: The beach area has excessive litter and trash that requires cleaning.</p>
-                <p>Reported by: Ahmad Khan</p>
-                <button>Resolve Issue</button>
-            </div>
-        </section>
+
     </div>
 </body>
 </html>

@@ -81,9 +81,11 @@ button:hover {
     <div class="issue-page-container">
         <section class="issue-form">
             <h2>Report an Issue</h2>
-            <form>
+            <form method="POST" action="/reportissue">
+                @csrf
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <label for="issue-type">Issue Type:</label>
-                <select id="issue-type" name="issue-type">
+                <select id="complaint-type" name="complaint_type">
                     <option value="garbage">Garbage Collection</option>
                     <option value="graffiti">Graffiti/Street Art</option>
                     <option value="park">Park Maintenance</option>

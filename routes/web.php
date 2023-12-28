@@ -60,6 +60,8 @@ Route::post('/store_event', [EventController::class, 'store'])->name('store.even
 //View Event
 Route::get('/view_event', [EventController::class, 'showEvents'])->name('events.show');
 
+Route::get('/search_event', [EventController::class, 'showEvents'])->name('events.search');
+
 
 // Edit Event
 Route::get('/edit_event/{eventId}', [EventController::class, 'editEvent'])->name('events.edit');
@@ -73,3 +75,12 @@ Route::delete('/delete_event/{eventId}', [EventController::class, 'deleteEvent']
 Route::get('/volunteer/{eventId}', [EventController::class, 'getDateRange'])->name('volunteer.select');
 
 Route::post('/save-volunteer/{eventId}', [EventController::class, 'saveVolunteer'])->name('volunteer.save');
+
+Route::get('/reportissue', [ComplaintController::class,'index'])->name('complaints.form');
+
+
+Route::post('/reportissue', [ComplaintController::class,'store']);
+
+
+Route::get('/complaints', [ComplaintController::class,'getAllComplaints']);
+

@@ -18,6 +18,14 @@
         @endif
     @endif
 
+    <div class="search-bar">
+        <form action="{{ route('events.search') }}" method="GET">
+            <input type="text" name="search" placeholder="Search by title...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+
     <div class="event-page-container">
     @foreach($events as $event)
         <section class="event">

@@ -14,12 +14,19 @@ class EventController extends Controller
         return view('events.create_event');
     }
 
-    public function showEvents()
+    public function showEvents(Request $request)
     {
-        $events = Event::all(); // Assuming you have an "Event" model
+        $search = $request->input('search');
+        
+        if ($search) {
+            $events = Event::where('title', 'like', '%' . $search . '%')->get();
+        } else {
+            $events = Event::all();
+        }
     
         return view('events.viewevent', ['events' => $events]);
     }
+    
     
     public function store(Request $request)
     {
