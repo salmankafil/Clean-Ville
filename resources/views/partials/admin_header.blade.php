@@ -10,7 +10,6 @@
             <li><a href="{{ url('/create_event') }}" class="{{ Request::is('create_event*') ? 'active' : '' }}">Create Event</a></li>
             <li><a href="{{ url('/view_event') }}" class="{{ Request::is('view_event*') ? 'active' : '' }}">View Events</a></li>
             <li><a href="{{ url('/complaints') }}">Complaints</a></li>
-            <li><a href="{{ url('/view_resources') }}">View Resources</a></li>
             <li>  @auth
                 <form action="{{ route('logout') }}" method="post">
                         @csrf

@@ -66,7 +66,7 @@ class EventController extends Controller
         }
     
         // Redirect back with a success message
-        return redirect()->route('user.dashboard', ['userId' => auth()->id()])->with('success', 'Event created successfully!');
+        return redirect()->route('events.show')->with('success', 'Event created successfully!');
     }
 
 

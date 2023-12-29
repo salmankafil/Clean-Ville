@@ -35,17 +35,21 @@ class ComplaintController extends Controller
     {
         // Validate the form data
         $validatedData = $request->validate([
-            'user_id' => 'required',
             'complaint_type' => 'required',
             'description' => 'required',
         ]);
-
-
+    
+        // Get the authenticated user's ID
+        $userId = auth()->id();
+    
+        // Add the user_id to the validated data
+        $validatedData['user_id'] = $userId;
+    
         // Create a new complaint
         $complaint = Complaint::create($validatedData);
-
+    
         // Optionally, you can redirect somewhere after submission
-        return redirect()->route('complaints.form')->with('success', 'Complaint submitted successfully!');
+        return redirect()->route('user.dashboard', ['userId' => $userId])->with('success', 'Complaint submitted successfully!');
     }
 
     /**

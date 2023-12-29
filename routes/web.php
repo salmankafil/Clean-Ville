@@ -90,3 +90,5 @@ Route::post('/reportissue', [ComplaintController::class,'store']);
 
 Route::get('/complaints', [ComplaintController::class,'getAllComplaints']);
 
+Route::get('/faqs', [FAQController::class, 'index']);
+

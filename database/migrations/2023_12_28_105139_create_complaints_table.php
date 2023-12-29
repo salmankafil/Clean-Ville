@@ -12,7 +12,7 @@ class CreateComplaintsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('description');
-            $table->string('complaint_type');
+            $table->string('complaint_type', 255);
             $table->timestamps();
         });
     }

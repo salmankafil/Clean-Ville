@@ -4,80 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Issue - Clean Ville</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/misc.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 </head>
 <style>
-    .issue-page-container {
-    background-color: #f7f7f7;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-}
 
-.issue-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 40%; /* Adjust to your preferred width */
-    text-align: center;
-    padding-right: 40px;
-}
-
-.issue-form h2 {
-    font-size: 24px;
-    color: #333;
-    margin: 10px 0;
-}
-
-label {
-    display: block;
-    margin: 10px 0;
-    text-align: left;
-    color: #333;
-}
-
-select, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
 </style>
 <body>
-    <header>
-        <div class="logo">
-            <img src="{{ asset('images/Clean ville.png') }}" alt="Cleaning Scheduler Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/homepage">Home</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/viewevent">View Events</a></li>
-                <li><a href="/reportissue" class="active">Report Issue</a></li>
-                <li><a href="/faqs">FAQs</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    @include('partials.user_header')
     <div class="issue-page-container">
         <section class="issue-form">
             <h2>Report an Issue</h2>

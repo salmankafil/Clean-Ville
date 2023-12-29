@@ -9,14 +9,7 @@
 </head>
 
 <body>
-    <div class="icon-container">
-        <a href="/homepage" class="home-link">
-            <i class="fas fa-home"></i>
-        </a>
-        <a href="/contact" class="contact-link">
-            <i class="fas fa-envelope"></i>
-        </a>
-        </div>
+
     <div class="logo">
             <img src="{{ asset('images/signup.png') }}" alt="Website Logo"> 
             <p>Where Community Unites for a Greener Tomorrow! </p>   
@@ -48,6 +41,15 @@
             </div>
 
             <div>
+            <label for="contact_no">Contact No:</label>
+            <input type="tel" id="contact_no" name="contact_no"  value="{{old('contact_no')}}" >
+            @error('contact_no')
+            <p class="error">{{$message}}</p>
+            @enderror
+
+            </div>
+
+            <div>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="{{old('password')}}" >
             @error('password')
@@ -57,7 +59,7 @@
 
         <div>
             <label for="password">Confirm Password:</label>
-            <input type="password" id="password" name="password_confirmation" value="{{old('password_confirmation')}}">
+            <input type="password" id="password_confirmation" name="password_confirmation" value="{{old('password_confirmation')}}">
             @error('password_confirmation')
             <p class="error">{{$message}}</p>
             @enderror

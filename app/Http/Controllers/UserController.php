@@ -20,12 +20,13 @@ class UserController extends Controller
 
         // Create New User
         public function store(Request $request){
-       
+           // dd($request->all());
             $formFields=$request->validate(
                 [
                     'name'=> 'required',
                     'email'=>['required','email', Rule::unique('users', 'email')],
                     'password'=>'required|confirmed|min:6',
+                    'contact_no' => 'required',
                 ]
                 );
                 // Hash Password
