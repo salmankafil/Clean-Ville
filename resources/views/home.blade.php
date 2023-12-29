@@ -9,7 +9,7 @@
     <link rel="stylesheet"  href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-    @include('partials.header');
+    @include('partials.home_header');
     
     <section class="introduction">
         <h1>Empower Your Community to Clean and Thrive!</h1>

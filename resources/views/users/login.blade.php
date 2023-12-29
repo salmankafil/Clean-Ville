@@ -11,11 +11,8 @@
 
 <body>
     <div class="icon-container">
-    <a href="/homepage" class="home-link">
+    <a href="/" class="home-link">
         <i class="fas fa-home"></i>
-    </a>
-    <a href="contact.html" class="contact-link">
-        <i class="fas fa-envelope"></i>
     </a>
     </div>
     <section class="mission">

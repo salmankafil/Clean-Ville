@@ -32,7 +32,7 @@ class ComplaintController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {     //dd($request->all());
         // Validate the form data
         $validatedData = $request->validate([
             'complaint_type' => 'required',

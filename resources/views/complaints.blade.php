@@ -10,9 +10,9 @@
 
 <body>
     @include('partials.admin_header')
-    <div class="view-issues-page-container">
+    <div class="view-issues-page-container">     
+    <h2 class="h2">Reported Issues</h2>
         <section class="issue">
-            <h2>Reported Issues</h2>
             @foreach ($complaints as $complaint)     
             <div class="issue-details">
                 <h2>Title: {{$complaint->complaint_type}}</h2>

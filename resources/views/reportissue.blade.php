@@ -20,13 +20,13 @@
                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <label for="issue-type">Issue Type:</label>
                 <select id="complaint-type" name="complaint_type">
-                    <option value="garbage">Garbage Collection</option>
-                    <option value="graffiti">Graffiti/Street Art</option>
-                    <option value="park">Park Maintenance</option>
-                    <option value="dumping">Illegal Dumping</option>
-                    <option value="leakage">Water Leakage</option>
-                    <option value="litter">Litter Accumuation</option>
-                    <option value="trees">Tree Maintenance</option>
+                    <option value="Garbage Collection">Garbage Collection</option>
+                    <option value="Graffiti/Street Art">Graffiti/Street Art</option>
+                    <option value="Park Maintenance">Park Maintenance</option>
+                    <option value="Illegal Dumping">Illegal Dumping</option>
+                    <option value="Water Leakage">Water Leakage</option>
+                    <option value="Litter Accumuation">Litter Accumuation</option>
+                    <option value="Tree Maintenance">Tree Maintenance</option>
                 </select>
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="4" cols="50" placeholder="Describe the issue..."></textarea>
