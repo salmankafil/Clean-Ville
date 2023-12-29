@@ -40,18 +40,40 @@ nav ul {
     gap: 20px;
 }
 
-nav a {
+nav a  {
     text-decoration: none;
     color: #fffcfc;
     font-weight: bold;
     border-radius: 5px;
     padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s; /* Added transition properties for color and background-color */
+    transition: background-color 0.3s, color 0.3s;
+    outline: none; 
 }
 
 nav a:hover {
     background-color: #cafacd;
     color: #007BFF; /* Change the link color on hover */
+}
+.logout {
+    background-color: transparent;
+    color: #fffcfc;
+    font-weight: bold;
+    border: none; /* Remove border for a cleaner look */
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer; /* Add a cursor pointer to indicate interactivity */
+    transition: background-color 0.3s, color 0.3s;
+    outline: none; /* Remove the default focus outline */
+    margin-top: -6px;
+}
+
+.logout:hover {
+    background-color: #cafacd;
+    color: #007BFF;
+}
+
+.logout:focus {
+    box-shadow: 0 0 2px 2px #007BFF;
 }
 h3{
     background-color: #007BFF;
@@ -212,11 +234,47 @@ cursor: pointer;
 transition: background-color 0.3s;
 }
 
+.task-assignments td.volunteer_status {
+    padding-right: 10px; 
+    align-items: center ;
+}
 
-.status-dropdown {
-    padding: 15px;
+.task-assignments select.status_dropdown {
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+   
+    
+    background-position: right 8px center;
+    cursor: pointer;
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+/* Change border color on hover */
+.task-assignments select.status_dropdown:hover {
+    border-color: #007BFF;
+}
+
+/* Remove focus outline and add box shadow on focus */
+.task-assignments select.status_dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style the submit button */
+.task-assignments button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Change button color on hover */
+.task-assignments button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 .error {
@@ -237,3 +295,28 @@ transition: background-color 0.3s;
     margin-right: 10px;
 
 }
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+
+

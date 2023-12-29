@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Event;
+use App\Models\Task;
+use App\Models\EventVolunteer;
 
 class UserController extends Controller
 {
@@ -46,12 +49,11 @@ class UserController extends Controller
         
         //Logout the user
         public function logout(Request $request){
+            //dd($request->all());
             auth()->logout();
 
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-    
-            return redirect('/login')->with('message', 'You have been logged out!');
+           
+            return redirect('/')->with('message', 'You have been logged out!');
         }
     
     
@@ -86,9 +88,16 @@ class UserController extends Controller
 
    
     if ($user->role == 'user') {
+
+        $volunteers = EventVolunteer::where('user_id', $user->id)->with(['event', 'task'])->get();
+        return view('dashboards.user', compact('user', 'volunteers'));
         return view('dashboards.user', compact('user'));
     } elseif ($user->role == 'admin') {
-        return view('dashboards.admin', compact('user'));
+
+        $volunteers = EventVolunteer::with(['event', 'task', 'user'])->get();
+        return view('dashboards.admin', compact('user', 'volunteers'));
+        
+
     } else {
        
     }
@@ -103,4 +112,7 @@ public function adminDashboard(Request $request) {
     // You can customize this method for the admin dashboard
     return view('dashboards.admin');
 }
+
+
+
 }

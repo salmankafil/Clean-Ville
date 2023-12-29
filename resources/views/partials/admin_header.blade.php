@@ -11,7 +11,13 @@
             <li><a href="{{ url('/view_event') }}" class="{{ Request::is('view_event*') ? 'active' : '' }}">View Events</a></li>
             <li><a href="{{ url('/complaints') }}">Complaints</a></li>
             <li><a href="{{ url('/view_resources') }}">View Resources</a></li>
-            <li><a href="{{ url('/logout') }}">Logout</a></li>
+            <li>  @auth
+                <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button  class="logout" type="submit">Logout</button>
+                    </form>
+                    @endauth
+            </li>
         </ul>
     </nav>
 </header>

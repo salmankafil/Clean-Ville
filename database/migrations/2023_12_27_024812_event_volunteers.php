@@ -13,6 +13,7 @@ class EventVolunteers extends Migration
         $table->id();
         $table->foreignId('event_id')->constrained();
         $table->foreignId('user_id')->constrained();
+        $table->foreignId('task_id')->nullable()->constrained(); 
         $table->date('preferred_date');
         $table->timestamps();
     });
@@ -25,6 +26,7 @@ class EventVolunteers extends Migration
      */
     public function down()
     {
-        //
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('event_volunteers');
     }
 }

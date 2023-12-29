@@ -19,6 +19,11 @@ class CreateComplaintsTable extends Migration
 
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::table('complaints', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+    
         Schema::dropIfExists('complaints');
     }
 }

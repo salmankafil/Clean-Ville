@@ -21,7 +21,13 @@ class CreateTasksTable extends Migration
     }
 
     public function down()
-    {
-        Schema::dropIfExists('tasks');
-    }
+{
+
+    Schema::disableForeignKeyConstraints();
+    Schema::table('tasks', function (Blueprint $table) {
+        $table->dropForeign(['event_id']);
+    });
+
+    Schema::dropIfExists('tasks');
+}
 }

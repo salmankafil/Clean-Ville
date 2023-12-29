@@ -25,7 +25,6 @@
         </form>
     </div>
 
-
     <div class="event-page-container">
     @foreach($events as $event)
         <section class="event">

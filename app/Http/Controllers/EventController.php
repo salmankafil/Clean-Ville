@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Task;
 use App\Models\EventVolunteer;
+use App\Models\VolunteerStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -147,33 +148,83 @@ class EventController extends Controller
 
     $dateRange = $event->getDateRange();
 
+   
+
     return view('events.select_date', compact('event', 'dateRange'));
 }
 
 
 
-public function saveVolunteer(Request $request,$eventId)
-{   
-   
-    // Validate the request as needed
+public function saveVolunteer(Request $request, $eventId)
+    {
+        
 
-    // Get user ID from the authenticated user
-    $userId = auth()->user()->id;
+        // Get user ID from the authenticated user
+        $userId = auth()->user()->id;
 
-    // Get data from the request
-    $eventId = $request->input('eventId');
-    $preferredDate = $request->input('preferredDate');
+        // Get data from the request
+        $preferredDate = $request->input('preferredDate');
 
-    // Save the volunteer information to the database
-    EventVolunteer::create([
-        'user_id' => $userId,
-        'event_id' => $eventId,
-        'preferred_date' => $preferredDate,
+        // Save the volunteer information to the database
+        $eventVolunteer = EventVolunteer::create([
+            'user_id' => $userId,
+            'event_id' => $eventId,
+            'preferred_date' => $preferredDate,
+            
+        ]);
+
+            
+            
+        // Assign a random task to the volunteer
+        $this->assignRandomTask($eventVolunteer);
+
+              // Find or create a VolunteerStatus record based on user_id and event_id
+              $volunteerStatus = VolunteerStatus::firstOrCreate(
+                ['user_id' => $eventVolunteer->user_id, 'event_id' => $eventVolunteer->event_id],
+                ['status' => 'pending'] // Default status when creating a new record
+            );
+
+
+        // Respond with a success message or other appropriate response
+        return redirect()->route('events.show');
+    }
+
+    // Helper method to assign a random task to the volunteer
+    private function assignRandomTask(EventVolunteer $eventVolunteer)
+    {
+        // Get all tasks associated with the event
+        $event = Event::findOrFail($eventVolunteer->event_id);
+        $tasks = $event->tasks;
+
+        // Randomly select a task
+        $randomTask = $tasks->random();
+
+        // Update the volunteer with the assigned task
+        $eventVolunteer->task_id = $randomTask->id;
+        $eventVolunteer->save();
+    }
+
+    public function updateStatus(Request $request, $volunteerId)
+{
+    
+    $validatedData = $request->validate([
+        'status' => 'required|in:Completed,Pending,In Progress',
     ]);
 
-    // Respond with a success message or other appropriate response
-    return redirect()->route('events.show');
+    // Find the EventVolunteer record
+    $eventVolunteer = EventVolunteer::findOrFail($volunteerId);
+
+    // Update the status in the volunteer_statuses table
+    VolunteerStatus::updateOrCreate(
+        ['user_id' => $eventVolunteer->user_id, 'event_id' => $eventVolunteer->event_id],
+        ['status' => $validatedData['status']]
+    );
+
+    return redirect()->back()->with('success', 'Status updated successfully');
 }
+
+
+
 
 
 

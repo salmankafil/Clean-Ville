@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,8 +38,9 @@ Route::get('/signup',[UserController::class,'create'] );
 //Create New User
 Route::post('/users', [UserController::class,'store']);
 
-//Log User Out
-Route::post('/logout', [UserController::class, 'logout']);
+//Log Out User 
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
 
 
 // Route for displaying user-specific dashboard
@@ -75,6 +77,10 @@ Route::delete('/delete_event/{eventId}', [EventController::class, 'deleteEvent']
 Route::get('/volunteer/{eventId}', [EventController::class, 'getDateRange'])->name('volunteer.select');
 
 Route::post('/save-volunteer/{eventId}', [EventController::class, 'saveVolunteer'])->name('volunteer.save');
+
+Route::post('/user/update-status/{volunteerId}', [EventController::class, 'updateStatus'])->name('user.updateStatus');
+
+
 
 Route::get('/reportissue', [ComplaintController::class,'index'])->name('complaints.form');
 

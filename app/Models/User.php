@@ -47,4 +47,9 @@ class User extends Authenticatable
     return $this->belongsToMany(Event::class)->withPivot('preferred_date');
 }
 
+public function volunteerStatus()
+    {
+        return $this->hasOne(VolunteerStatus::class);
+    }
+
 }
