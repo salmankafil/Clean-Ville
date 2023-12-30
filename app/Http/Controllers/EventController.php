@@ -20,7 +20,9 @@ class EventController extends Controller
         $search = $request->input('search');
         
         if ($search) {
-            $events = Event::where('title', 'like', '%' . $search . '%')->get();
+            $events = Event::where('title', 'like', '%' . $search . '%')->
+            orWhere('description', 'like', '%' . $search . '%')->
+            orWhere('location', 'like', '%' . $search . '%')->get();
         } else {
             $events = Event::all();
         }
@@ -31,8 +33,6 @@ class EventController extends Controller
     
     public function store(Request $request)
     {
-        //dd($request->all());
-        // Validate the request data
         $request->validate([
             'event-name' => 'required|string|max:255',
             'fromperiod' => 'required|date',
@@ -128,6 +128,7 @@ class EventController extends Controller
     
     public function deleteEvent($eventId)
     {
+        //Select an event first from provided id and then delete
         $event = Event::findOrFail($eventId);
         $event->delete();
 
@@ -140,7 +141,7 @@ class EventController extends Controller
     public function getDateRange(Request $request,$eventId)
 {
    
-    $event = Event::find($eventId);
+    $event = Event::findOrFail($eventId);
 
     if (!$event) {
         return response()->json(['error' => 'Event not found'], 404);
@@ -219,7 +220,7 @@ public function saveVolunteer(Request $request, $eventId)
         ['user_id' => $eventVolunteer->user_id, 'event_id' => $eventVolunteer->event_id],
         ['status' => $validatedData['status']]
     );
-
+    //returns back to the page user came from
     return redirect()->back()->with('success', 'Status updated successfully');
 }
 
